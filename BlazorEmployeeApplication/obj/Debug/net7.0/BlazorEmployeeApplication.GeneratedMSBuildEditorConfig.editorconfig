@@ -1,0 +1,63 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = BlazorEmployeeApplication
+build_property.RootNamespace = BlazorEmployeeApplication
+build_property.ProjectDir = C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/hamod/Desktop/halaBlazor/BlazorEmployee/BlazorEmployeeApplication/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hamod/Desktop/halaBlazor/BlazorEmployee/BlazorEmployeeApplication/Pages/DisplayEmployee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzcGxheUVtcGxveWVlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hamod/Desktop/halaBlazor/BlazorEmployee/BlazorEmployeeApplication/Pages/EditEmployee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdEVtcGxveWVlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hamod/Desktop/halaBlazor/BlazorEmployee/BlazorEmployeeApplication/Pages/EmployeeDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVEZXRhaWxzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hamod/Desktop/halaBlazor/BlazorEmployee/BlazorEmployeeApplication/Pages/EmployeeList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hamod/Desktop/halaBlazor/BlazorEmployee/BlazorEmployeeApplication/Pages/TwoWayDataBinding.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHdvV2F5RGF0YUJpbmRpbmcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hamod/Desktop/halaBlazor/BlazorEmployee/BlazorEmployeeApplication/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hamod/Desktop/halaBlazor/BlazorEmployee/BlazorEmployeeApplication/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hamod/Desktop/halaBlazor/BlazorEmployee/BlazorEmployeeApplication/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-45lufkzz8p
+
+[C:/Users/hamod/Desktop/halaBlazor/BlazorEmployee/BlazorEmployeeApplication/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-t1mvhcewkz

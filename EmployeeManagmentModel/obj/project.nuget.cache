@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "t5kKBMrPJBHCt1cmQ6qvFXielrZtq0dGaHfApBPq0wtRE+d/sGoYfUXUs/gYKp+V8yDpjW5og5JBru7Da8Ukzw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hamod\\Desktop\\halaBlazor\\BlazorEmployee\\EmployeeManagmentModel\\EmployeeManagmentModel.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hamod\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

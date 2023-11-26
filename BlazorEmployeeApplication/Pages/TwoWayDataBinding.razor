@@ -1,0 +1,17 @@
+﻿@page "/twoWayDataBinding"
+<h3>TwoWayDataBinding</h3>
+
+<div>
+    <textarea @bind="Description" @bind:event="oninput" />
+</div>
+<div>
+    Count : @Description.Length
+</div>
+
+@code {
+
+    /*Create Description property in the component class.
+     * It's important you initialise the property to an empty string, 
+     * otherwise you will get a null reference exception at runtime.*/
+    public string Description { get; set; } = string.Empty;
+}
