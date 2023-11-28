@@ -89,6 +89,10 @@
       "PackagePath": "staticwebassets\\images\\mary.png"
     },
     {
+      "Id": "C:\\Users\\hamod\\Desktop\\halaBlazor\\BlazorEmployee\\BlazorEmployeeApplication\\wwwroot\\images\\nophoto.jpg",
+      "PackagePath": "staticwebassets\\images\\nophoto.jpg"
+    },
+    {
       "Id": "C:\\Users\\hamod\\Desktop\\halaBlazor\\BlazorEmployee\\BlazorEmployeeApplication\\wwwroot\\images\\sam.jpg",
       "PackagePath": "staticwebassets\\images\\sam.jpg"
     },

@@ -1,7 +1,7 @@
 {
   "entryAssembly": "BlazorEmployeeApplication",
   "resources": {
-    "hash": "sha256-RHMpm9+zZ/garJahTgkMv7SN7Vd1XmKqfoMVFjC/STQ=",
+    "hash": "sha256-dRrX20+J0HtZB/C9gKtJVP+rr3qjGAXsu9yKoJwMaww=",
     "runtime": {
       "dotnet.7.0.14.y93f6u18pa.js": "sha256-YWGUknGRzP/fgO6YjvCJKPVQNZAPEd6ll+rHfQEIW+I=",
       "dotnet.timezones.blat": "sha256-t5xviiOQTfAsF0UDhmcyalKiaehUmf/sqJl97tmPM0M=",
@@ -11,8 +11,11 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
+      "AutoMapper.dll": "sha256-IPLECjhzAo5JapVuuAB/ZT5OGwiSRZEKxtY7EMNCH38=",
+      "AutoMapper.Extensions.Microsoft.DependencyInjection.dll": "sha256-RFmP6C+/wYl1ISrVBekC+K2zrBwqPDUwvi8dVw+tiUY=",
       "Microsoft.AspNetCore.Authorization.dll": "sha256-rtkwhICTsYE9Dtvit4qmKukHxhcBii8IGbm5icnCWbM=",
       "Microsoft.AspNetCore.Components.dll": "sha256-Qv8HUc4bc7hrinChcgqA5WvNTVXrGrA7KqK+y9K08KM=",
+      "Microsoft.AspNetCore.Components.DataAnnotations.Validation.dll": "sha256-VGaB03HIjFg4jeK7BomIFzlhhY3vW5N+jWuRqZkbJsY=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-OBwQa9gr6aP+n/xh7tnGjONUh7W1qym12VKXdPnpyUI=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-Gx0g1syHcH5YyRh+rs88++NwatlG0Ou51bQM/+Frqj8=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-RIHL/6PwsBDL0lyHHDfhPIxQbGmaVrZmZtBW08GfqHQ=",
@@ -203,12 +206,12 @@
       "mscorlib.dll": "sha256-YcsJInaT/kw3Vrm+SESegPxvT/Lr9RE6rE/KnxWIIc0=",
       "netstandard.dll": "sha256-TztlSRjADgiEABbiAMdWZpHrUVd8wnRtQRAvlwmRP/4=",
       "System.Private.CoreLib.dll": "sha256-BAhrZ8Zg3cJKQipxdzqQo+9jtPkOkRx1ou3oIhDohtk=",
-      "EmployeeManagmentModel.dll": "sha256-rQD3x/jluP72+VzpXPCNYZIRsvFX1f/nwgSzXF58Yu4=",
-      "BlazorEmployeeApplication.dll": "sha256-vb+ej+G0S3LDOlz/GG3vEPd+ZG0H6+ljoX3pJ6+ApSQ="
+      "EmployeeManagmentModel.dll": "sha256-c/E2JtHXT70usdQ74bP1fK2mOvZYWPYII/zeCfmWHcI=",
+      "BlazorEmployeeApplication.dll": "sha256-sXd8EnQGI8H6uPQNT2aggjgefd6lC0+y+bP3o3tdE+8="
     },
     "pdb": {
-      "EmployeeManagmentModel.pdb": "sha256-9rP34M1kY9hZ26SIsMdDOBY0X/G1edI+P9ACoNkuil0=",
-      "BlazorEmployeeApplication.pdb": "sha256-yDZeAVnO4/GjJ7yMPvvpbnTnjTDcdScU2nbVc+N3exU="
+      "EmployeeManagmentModel.pdb": "sha256-Y3r+s7A2BhUi3ZQ8yVyw/0wXaWpzD1mt7oWn5Blqx3Y=",
+      "BlazorEmployeeApplication.pdb": "sha256-/XtGLRx35CDlJ1U4F2/O2E8VdAcgWa7/hf+QmAplHfo="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

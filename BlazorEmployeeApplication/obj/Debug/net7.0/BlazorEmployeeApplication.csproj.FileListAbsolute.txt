@@ -837,3 +837,16 @@ C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\obj\D
 C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\obj\Debug\net7.0\compressed\nvvq5175zb.gz
 C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\obj\Debug\net7.0\compressed\969g8xfl6n.gz
 C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\obj\Debug\net7.0\compressed\ik2udfkwbe.gz
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\obj\Debug\net7.0\BlazorEmployeeApplication.sourcelink.json
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\bin\Debug\net7.0\wwwroot\_framework\Microsoft.AspNetCore.Components.DataAnnotations.Validation.dll
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\bin\Debug\net7.0\wwwroot\_framework\Microsoft.AspNetCore.Components.DataAnnotations.Validation.dll.gz
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\bin\Debug\net7.0\Microsoft.AspNetCore.Components.DataAnnotations.Validation.dll
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\obj\Debug\net7.0\compressed\2ssqxit6e9.gz
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\bin\Debug\net7.0\wwwroot\_framework\AutoMapper.dll
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\bin\Debug\net7.0\wwwroot\_framework\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\bin\Debug\net7.0\wwwroot\_framework\AutoMapper.Extensions.Microsoft.DependencyInjection.dll.gz
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\bin\Debug\net7.0\wwwroot\_framework\AutoMapper.dll.gz
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\obj\Debug\net7.0\compressed\79ce6f20fb.gz
+C:\Users\hamod\Desktop\halaBlazor\BlazorEmployee\BlazorEmployeeApplication\obj\Debug\net7.0\compressed\34nfm2jihh.gz

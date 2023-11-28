@@ -17,12 +17,13 @@ namespace EmployeeManagmentModel
 		[Required]
 		public string LastName { get; set; }
 
-		[EmailDomainValidator(AllowedDomain = "pragimtech.com")]
+		
 		public string Email { get; set; }
 		public DateTime DateOfBrith { get; set; }
 		public Gender Gender { get; set; }
 		public int DepartmentId { get; set; }
-		public Department Department { get; set; }
+       
+        public Department Department { get; set; }
 		public string PhotoPath { get; set; }
 	}
 }
