@@ -36,10 +36,15 @@ app.MapControllers();
 app.Run();
 */
 
+using EmployeeManagmentApi.Auth;
 using EmployeeManagmentApi.Models;
 using EmployeeManagmentApi.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using Shared.Auth;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,7 +61,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 
 //AddCors. you are telling the server to allow requests from any origin (AllowAnyOrigin),
@@ -78,7 +83,20 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod();
     });
 });
-
+AuthorizationPolicies.AddPolicies(builder.Services);
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    };
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -90,7 +108,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors(); // Place this before app.Run()
-
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
