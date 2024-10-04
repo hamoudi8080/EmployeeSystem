@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagmentModel", "E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorEmployeeApplication", "BlazorEmployeeApplication\BlazorEmployeeApplication.csproj", "{D0922E40-6DF9-4B17-8A2F-63504DEA03AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{C93FC1C5-AC45-4C11-8E55-18384BDF13D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{C93FC1C5-AC45-4C11-8E55-18384BDF13D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{450C6363-B59F-4765-991C-DF9CDE5A4D68}"
+	ProjectSection(SolutionItems) = preProject
+		JWT.md = JWT.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using BlazorEmployeeApplication.Components
+@inherits LayoutComponentBase
 
 <div class="page">
     <div class="sidebar">
@@ -8,7 +9,9 @@
     </div>
 
     <main>
-
+        <div class="top-row px-4">
+            <LoginButtons/>
+        </div>
 
         <article class="content px-4 container">
             @Body

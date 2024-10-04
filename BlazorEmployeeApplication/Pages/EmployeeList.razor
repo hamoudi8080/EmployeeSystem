@@ -1,52 +1,46 @@
 ﻿@page "/"
 @inherits EmployeeListBase;
  
-
+@using Microsoft.AspNetCore.Components.Authorization
 
 <head>
 	<link rel="stylesheet" href="/css/EmployeeList.css" />
 </head>
 
 
+<AuthorizeView>
 
-<h3> Selected Employee @SelectedEmployeesCount</h3>
+			<NotAuthorized>
+				<h3> You are not authorized to access this page</h3>
+			</NotAuthorized>
+			 <Authorized >
+            <h3> Hello, @context.User.Identity.Name</h3
+				
+			
+			
+			<h3> Selected Employee @SelectedEmployeesCount</h3>
 
-<input type="checkbox" id="showFooter" @bind="ShowFooter" />
-<label for="showFooter">Show Footer</label>
+			<input type="checkbox" id="showFooter" @bind="ShowFooter" />
+			<label for="showFooter">Show Footer</label>
 
-@if (Employees == null)
-{
-	<div class="spinner"></div>
+			@if (Employees == null)
+			{
+				<div class="spinner"></div>
+			}
+			else
+			{
+				<div class="card-deck">
+					@foreach (var employee in Employees)
+					{
+						<DisplayEmployee Employee="employee" ShowFooter="ShowFooter" OnEmployeeSelection="EmployeeSelectionChanged">
+						</DisplayEmployee>
+					}
+				</div>
 }
-else
-{
-	<div class="card-deck">
-		@foreach (var employee in Employees)
-		{
-			<DisplayEmployee Employee="employee" ShowFooter="ShowFooter" OnEmployeeSelection="EmployeeSelectionChanged">
-			</DisplayEmployee>
-		}
-	</div>
-}
 
-@* <div class="card-deck ">
-	@foreach (var employee in Employees)
-	{
-		<div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+			
+			</Authorized>
 
-			<div class="card-header">
-				<h3>@employee.FirstName @employee.LastName</h3>
-			</div>
 
-			<img class="card-img-top imageThumbnail" src="@employee.PhotoPath" />
+</AuthorizeView>
 
-			<div class="card-footer text-center">
-				<a href="#" class="btn btn-primary m-1">View</a>
-
-				<a href="#" class="btn btn-primary m-1">Edit</a>
-
-				<a href="#" class="btn btn-danger m-1">Delete</a>
-			</div>
-		</div>
-	}
-</div>  *@

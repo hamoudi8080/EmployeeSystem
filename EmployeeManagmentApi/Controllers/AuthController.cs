@@ -14,6 +14,7 @@ namespace EmployeeManagmentApi.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
+
     public class AuthController : ControllerBase
     {
         private readonly IConfiguration config;

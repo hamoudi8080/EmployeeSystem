@@ -1,11 +1,13 @@
 ﻿using EmployeeManagmentApi.Repository;
 using EmployeeManagmentModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagmentApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepository employeeRepository;
@@ -15,7 +17,7 @@ namespace EmployeeManagmentApi.Controllers
             this.employeeRepository = employeeRepository;
         }
 
-        [HttpGet]
+        [HttpGet(), AllowAnonymous]
         public async Task<ActionResult> GetEmployees()
         {
             try
@@ -31,9 +33,7 @@ namespace EmployeeManagmentApi.Controllers
 
 
 
-
-
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}"), AllowAnonymous]
         public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
             try
@@ -52,7 +52,7 @@ namespace EmployeeManagmentApi.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost, AllowAnonymous]
         public async Task<ActionResult<Employee>>CreateEmployee(Employee employee)
         {
             try
@@ -86,7 +86,7 @@ namespace EmployeeManagmentApi.Controllers
         }
 
 
-        [HttpPut()]
+        [HttpPut(), AllowAnonymous]
         public async Task<ActionResult<Employee>> UpdateEmployee(Employee employee)
         {
             try
@@ -108,7 +108,7 @@ namespace EmployeeManagmentApi.Controllers
         }
 
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("{id:int}"), AllowAnonymous]
         public async Task<ActionResult<Employee>> DeleteEmployee(int id)
         {
             try
@@ -130,7 +130,7 @@ namespace EmployeeManagmentApi.Controllers
         }
 
 
-        [HttpGet("{search}")]
+        [HttpGet("{search}"), AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Employee>>> Search(string name, Gender? gender)
         {
             try
@@ -152,6 +152,18 @@ namespace EmployeeManagmentApi.Controllers
         }
 
 
+        [HttpGet("mustbevia"), Authorize("MustBeVia")]
+        public ActionResult GetAsVia()
+        {
+            return Ok("This was accepted as via domain");
+        }
+
+
+        [HttpGet("allowanon"), AllowAnonymous]
+        public ActionResult GetAsAnon()
+        {
+            return Ok("This was accepted as anonymous");
+        }
 
 
 
