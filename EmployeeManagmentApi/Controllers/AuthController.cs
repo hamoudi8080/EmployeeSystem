@@ -34,6 +34,8 @@ namespace EmployeeManagmentApi.Controllers
                 User user = await authService.ValidateUser(userLoginDto.Username, userLoginDto.Password);
                 string token = GenerateJwt(user); // <-- Add this line
 
+               
+
                 return Ok(token);
             }
             catch (Exception e)

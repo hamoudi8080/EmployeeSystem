@@ -3,25 +3,36 @@ using Shared.Models;
 using System.Security.Claims;
 using System.Text.Json;
 using System.Text;
+using BlazorEmployeeApplication.Auth;
+using Microsoft.JSInterop;
+using Blazored.SessionStorage;
+
+
 
 namespace BlazorEmployeeApplication.Services
 {
 
     public class JwtAuthService : IAuthService
     {
+
+
         private readonly HttpClient httpClient;
+
+        private ISessionStorageService _SessionStorage;
 
         // this private variable for simple caching
         public string? Jwt { get; private set; } = "";
 
         public Action<ClaimsPrincipal> OnAuthStateChanged { get; set; } = null!;
 
-        public JwtAuthService(HttpClient httpClient)
+        public JwtAuthService(HttpClient httpClient, ISessionStorageService _SessionStorage)
         {
             this.httpClient = httpClient;
+            this._SessionStorage = _SessionStorage;
         }
+       
 
-        public async Task LoginAsync(string username, string password)
+        public async Task<string> LoginAsync(string username, string password)
         {
             UserLoginDto userLoginDto = new()
             {
@@ -32,7 +43,6 @@ namespace BlazorEmployeeApplication.Services
             string userAsJson = JsonSerializer.Serialize(userLoginDto);
             StringContent content = new(userAsJson, Encoding.UTF8, "application/json");
 
-
             HttpResponseMessage response = await httpClient.PostAsync($"api/Auth/login", content);
             string responseContent = await response.Content.ReadAsStringAsync();
 
@@ -42,15 +52,20 @@ namespace BlazorEmployeeApplication.Services
             }
 
             string token = responseContent;
-            Jwt = token;
+            //Jwt = token;
 
-            ClaimsPrincipal principal = CreateClaimsPrincipal();
+            await _SessionStorage.SetItemAsync("token", token);
+
+            Jwt = await _SessionStorage.GetItemAsync<string>("token");
+            ClaimsPrincipal principal = await CreateClaimsPrincipalAsync();
 
             OnAuthStateChanged.Invoke(principal);
+            return token;
         }
 
-        private ClaimsPrincipal CreateClaimsPrincipal()
+        private async Task<ClaimsPrincipal> CreateClaimsPrincipalAsync()
         {
+            Jwt = await _SessionStorage.GetItemAsync<string>("token");
             if (string.IsNullOrEmpty(Jwt))
             {
                 return new ClaimsPrincipal();
@@ -58,17 +73,19 @@ namespace BlazorEmployeeApplication.Services
 
             IEnumerable<Claim> claims = ParseClaimsFromJwt(Jwt);
 
-            ClaimsIdentity identity = new(claims, "jwt");
+            ClaimsIdentity identity = new(claims, "Jwt");
 
             ClaimsPrincipal principal = new(identity);
             return principal;
         }
 
-        public Task LogoutAsync()
+        public async Task<Task> LogoutAsync()
         {
             Jwt = null;
+             await _SessionStorage.RemoveItemAsync("token");
             ClaimsPrincipal principal = new();
             OnAuthStateChanged.Invoke(principal);
+          
             return Task.CompletedTask;
         }
 
@@ -85,10 +102,10 @@ namespace BlazorEmployeeApplication.Services
             }
         }
 
-        public Task<ClaimsPrincipal> GetAuthAsync()
+        public async Task<ClaimsPrincipal> GetAuthAsync()
         {
-            ClaimsPrincipal principal = CreateClaimsPrincipal();
-            return Task.FromResult(principal);
+            ClaimsPrincipal principal = await CreateClaimsPrincipalAsync();
+            return await Task.FromResult(principal);
         }
 
 

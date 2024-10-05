@@ -1,5 +1,10 @@
-﻿using BlazorEmployeeApplication.Services;
+﻿
+using BlazorEmployeeApplication.Auth;
+using BlazorEmployeeApplication.Services;
 using Microsoft.AspNetCore.Components;
+using Blazored.SessionStorage;
+using System.Security.Claims;
+
 
 
 namespace BlazorEmployeeApplication.Pages
@@ -17,13 +22,25 @@ namespace BlazorEmployeeApplication.Pages
         [Inject]
         public NavigationManager navMgr { get; set; }
 
+        //[Inject]
+        //public ISessionStorageService SessionStorage { get; set; }
+
+       
+     
         protected async Task LoginAsync()
         {
             errorLabel = "";
             try
             {
-                await authService.LoginAsync(userName, password);
-                navMgr.NavigateTo("/");
+                string token = await authService.LoginAsync(userName, password);
+                if (!string.IsNullOrEmpty(token))
+                {
+                 //   await SessionStorage.SetItemAsync("token", token);
+
+                    navMgr.NavigateTo("/");
+                }
+
+
             }
             catch (Exception e)
             {
@@ -40,8 +57,12 @@ namespace BlazorEmployeeApplication.Pages
 
         protected async Task Logout()
         {
-            await authService.LogoutAsync();
-            navMgr.NavigateTo("/");
+    
+        //   await SessionStorage.RemoveItemAsync("token");
+            await authService.LogoutAsync(); // Call the logout method
+           
+
+
         }
 
 
