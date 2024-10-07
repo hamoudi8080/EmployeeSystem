@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagmentModel
 {
-	public class Employee
+    public class Employee
 	{
 		public int EmployeeId { get; set; }
 		[Required]
@@ -25,5 +25,8 @@ namespace EmployeeManagmentModel
        
         public Department Department { get; set; }
 		public string PhotoPath { get; set; }
+
+		public int AdminId { get; set; }
+		public Admin Admin { get; set; }
 	}
 }

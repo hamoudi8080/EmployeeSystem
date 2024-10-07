@@ -1,11 +1,11 @@
-﻿using Shared.Models;
+﻿using EmployeeManagmentModel;
 
 namespace EmployeeManagmentApi.Auth
 {
     public interface IAuthService
     {
-        Task<User> GetUser(string username, string password);
-        Task<User> ValidateUser(string username, string password);
-        Task RegisterUser(User user);
+        Task<Admin> GetUser(string username, string password);
+        Task<Admin> ValidateUser(string username, string password);
+        Task<Admin> RegisterAdmin(Admin admin);
     }
 }

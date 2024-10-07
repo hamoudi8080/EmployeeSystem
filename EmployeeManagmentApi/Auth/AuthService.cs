@@ -1,14 +1,21 @@
-﻿using Shared.Models;
+﻿using EmployeeManagmentApi.Models;
+using EmployeeManagmentModel;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeManagmentApi.Auth
 {
     public class AuthService : IAuthService
     {
+        private readonly AppDbContext appDbContext;
 
-        private readonly IList<User> users = new List<User>
+        public AuthService(AppDbContext appDbContext) {
+            this.appDbContext = appDbContext;
+        }
+
+        private readonly IList<Admin> users = new List<Admin>
     {
-        new User
+        new Admin
         {
             Age = 36,
             Email = "trmo@via.dk",
@@ -19,7 +26,7 @@ namespace EmployeeManagmentApi.Auth
             Username = "hamo",
             SecurityLevel = 4
         },
-        new User
+        new Admin
         {
             Age = 34,
             Email = "jakob@gmail.com",
@@ -32,9 +39,9 @@ namespace EmployeeManagmentApi.Auth
         }
     };
 
-        public Task<User> ValidateUser(string username, string password)
+        public Task<Admin> ValidateUser(string username, string password)
         {
-            User? existingUser = users.FirstOrDefault(u =>
+            Admin? existingUser = users.FirstOrDefault(u =>
                 u.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
 
             if (existingUser == null)
@@ -50,12 +57,25 @@ namespace EmployeeManagmentApi.Auth
             return Task.FromResult(existingUser);
         }
 
-        public Task<User> GetUser(string username, string password)
+        public async Task<Admin> GetUser(string username, string password)
         {
-            throw new NotImplementedException();
+            Admin? existingUser = await appDbContext.User
+            .FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
+
+            if (existingUser == null)
+            {
+                throw new ValidationException("User not found");
+            }
+
+            if (!existingUser.Password.Equals(password))
+            {
+                throw new ValidationException("Password mismatch");
+            }
+
+            return existingUser;
         }
 
-        public Task RegisterUser(User user)
+        public async Task<Admin> RegisterAdmin(Admin user)
         {
             if (string.IsNullOrEmpty(user.Username))
             {
@@ -66,13 +86,14 @@ namespace EmployeeManagmentApi.Auth
             {
                 throw new ValidationException("Password cannot be null");
             }
-            // Do more user info validation here
 
-            // save to persistence instead of list
+            //users.Add(user);
 
-            users.Add(user);
+            // Save changes to the database
+            await appDbContext.SaveChangesAsync();
 
-            return Task.CompletedTask;
+            // Return the registered user
+            return user;
         }
     }
 }

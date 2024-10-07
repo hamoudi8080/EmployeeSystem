@@ -86,6 +86,13 @@ builder.Services.AddCors(options =>
 AuthorizationPolicies.AddPolicies(builder.Services);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
+    /*
+    Here we have specified various settings to be used when generating the JWT.
+
+    The "Key" is a secret key used when signing the token. It must be at least 16 characters, and can just be anything random.
+    The Issuer is who generated the JWT
+    The Audience is who the JWT is intended for
+    The Subject... I'm not sure*/
     options.RequireHttpsMetadata = false;
     options.SaveToken = true;
     options.TokenValidationParameters = new TokenValidationParameters()

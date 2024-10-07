@@ -1,11 +1,11 @@
 ﻿using Shared.Dtos;
-using Shared.Models;
 using System.Security.Claims;
 using System.Text.Json;
 using System.Text;
 using BlazorEmployeeApplication.Auth;
 using Microsoft.JSInterop;
 using Blazored.SessionStorage;
+using EmployeeManagmentModel;
 
 
 
@@ -89,7 +89,7 @@ namespace BlazorEmployeeApplication.Services
             return Task.CompletedTask;
         }
 
-        public async Task RegisterAsync(User user)
+        public async Task RegisterAsync(Admin user)
         {
             string userAsJson = JsonSerializer.Serialize(user);
             StringContent content = new(userAsJson, Encoding.UTF8, "application/json");

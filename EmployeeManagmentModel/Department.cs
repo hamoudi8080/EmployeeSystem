@@ -12,5 +12,8 @@ namespace EmployeeManagmentModel
 		public int DepartmentId { get; set; }
         [Required]
         public string DepartmentName { get; set; }
-	}
+
+        public ICollection<Employee> Employees { get; set; }
+
+    }
 }

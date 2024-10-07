@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{450C6363-B59F-4765-991C-DF9CDE5A4D68}"
 	ProjectSection(SolutionItems) = preProject
 		JWT.md = JWT.md
+		SystemRequirements.md = SystemRequirements.md
 	EndProjectSection
 EndProject
 Global

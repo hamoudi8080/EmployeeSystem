@@ -1,8 +1,8 @@
 ﻿using EmployeeManagmentApi.Auth;
+using EmployeeManagmentModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Shared.Dtos;
-using Shared.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -31,7 +31,15 @@ namespace EmployeeManagmentApi.Controllers
         {
             try
             {
-                User user = await authService.ValidateUser(userLoginDto.Username, userLoginDto.Password);
+             //   Admin user = await authService.ValidateUser(userLoginDto.Username, userLoginDto.Password);
+                Admin user = await authService.GetUser(userLoginDto.Username, userLoginDto.Password);
+
+                if (user == null)
+                {
+                    return Unauthorized();
+                }
+
+
                 string token = GenerateJwt(user); // <-- Add this line
 
                
@@ -44,7 +52,7 @@ namespace EmployeeManagmentApi.Controllers
             }
         }
 
-        private string GenerateJwt(User user)
+        private string GenerateJwt(Admin user)
         {
             List<Claim> claims = GenerateClaims(user);
 
@@ -66,7 +74,7 @@ namespace EmployeeManagmentApi.Controllers
             return serializedToken;
         }
 
-        private List<Claim> GenerateClaims(User user)
+        private List<Claim> GenerateClaims(Admin user)
         {
             var claims = new[]
             {
@@ -83,5 +91,23 @@ namespace EmployeeManagmentApi.Controllers
         };
             return claims.ToList();
         }
+
+        [HttpPost, Route("register")]
+        public async Task<ActionResult> RegisterAdmin(  Admin admin)
+        {
+            try
+            {
+                Admin user = await authService.RegisterAdmin(admin);
+               
+                return Ok(user);
+
+ 
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }
