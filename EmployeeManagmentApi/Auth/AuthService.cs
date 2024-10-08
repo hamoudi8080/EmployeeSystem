@@ -24,7 +24,7 @@ namespace EmployeeManagmentApi.Auth
             Password = "1234",
             Role = "Teacher",
             Username = "hamo",
-            SecurityLevel = 4
+        
         },
         new Admin
         {
@@ -35,31 +35,36 @@ namespace EmployeeManagmentApi.Auth
             Password = "12345",
             Role = "Student",
             Username = "jk1nr",
-            SecurityLevel = 2
+  
         }
     };
 
-        public Task<Admin> ValidateUser(string username, string password)
+        public async Task<Admin> ValidateUser(string username, string password)
         {
-            Admin? existingUser = users.FirstOrDefault(u =>
-                u.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
+
+            Admin? existingUser = await appDbContext.Admin
+       .FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
 
             if (existingUser == null)
             {
                 throw new Exception("User not found");
             }
 
-            if (!existingUser.Password.Equals(password))
+            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(password, existingUser.Password);
+
+            if (!isPasswordValid)
             {
                 throw new Exception("Password mismatch");
             }
 
-            return Task.FromResult(existingUser);
+            return existingUser;
         }
+
+
 
         public async Task<Admin> GetUser(string username, string password)
         {
-            Admin? existingUser = await appDbContext.User
+            Admin? existingUser = await appDbContext.Admin
             .FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
 
             if (existingUser == null)
@@ -87,10 +92,15 @@ namespace EmployeeManagmentApi.Auth
                 throw new ValidationException("Password cannot be null");
             }
 
-            //users.Add(user);
+            // Hash the password using BCrypt (which includes salting)
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            // Add the user to the database
+            await appDbContext.Admin.AddAsync(user);
 
             // Save changes to the database
             await appDbContext.SaveChangesAsync();
+
+          
 
             // Return the registered user
             return user;

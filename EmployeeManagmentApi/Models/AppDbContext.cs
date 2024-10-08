@@ -15,46 +15,54 @@ namespace EmployeeManagmentApi.Models
 
 		public DbSet<Employee> Employees { get; set; }
 		public DbSet<Department> Departments { get; set; }
-        public DbSet<Admin> User { get; set; }
+        public DbSet<Admin> Admin { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
 
+			// Configure Admin entity
+			modelBuilder.Entity<Admin>()
+				.HasKey(a => a.AdminId);
+
+
             modelBuilder.Entity<Admin>()
 		   .HasMany(e => e.Employees)
 		   .WithOne(e => e.Admin)
 		   .HasForeignKey(e => e.AdminId)
-		   .HasPrincipalKey(e => e.Id);
+		   .HasPrincipalKey(e => e.AdminId);
 
-
+            // Configure Employee entity
+            modelBuilder.Entity<Employee>()
+                .HasKey(e => e.EmployeeId);
+           
             modelBuilder.Entity<Employee>()
 			.HasOne(e => e.Department)
 			.WithMany(d => d.Employees)
 			.HasForeignKey(e => e.DepartmentId);
 
-            //Seed Departments Table
+            // Seed Departments Table
             modelBuilder.Entity<Department>().HasData(
-				new Department { DepartmentId = 1, DepartmentName = "IT" });
-			modelBuilder.Entity<Department>().HasData(
-				new Department { DepartmentId = 2, DepartmentName = "HR" });
-			modelBuilder.Entity<Department>().HasData(
-				new Department { DepartmentId = 3, DepartmentName = "Payroll" });
-			modelBuilder.Entity<Department>().HasData(
-				new Department { DepartmentId = 4, DepartmentName = "Admin" });
+                new Department { DepartmentId = 1, DepartmentName = "IT" });
+            modelBuilder.Entity<Department>().HasData(
+                new Department { DepartmentId = 2, DepartmentName = "HR" });
+            modelBuilder.Entity<Department>().HasData(
+                new Department { DepartmentId = 3, DepartmentName = "Payroll" });
+            modelBuilder.Entity<Department>().HasData(
+                new Department { DepartmentId = 4, DepartmentName = "Admin" });
 
+            // Seed Admin Table
             modelBuilder.Entity<Admin>().HasData(
                 new Admin
                 {
-                    Id = 1,
+                    AdminId = 1,
                     Age = 36,
                     Email = "trmo@via.dk",
                     Domain = "via",
                     Name = "hamo",
                     Password = "1234",
                     Role = "Teacher",
-                    Username = "hamo",
-                    SecurityLevel = 4
+                    Username = "hamo"
                 });
 
             // Seed Employees Table
@@ -107,6 +115,7 @@ namespace EmployeeManagmentApi.Models
                     PhotoPath = "images/sara.png",
                     AdminId = 1
                 });
+
         }
-	}
+    }
 }

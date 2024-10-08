@@ -1,8 +1,10 @@
 ﻿using EmployeeManagmentApi.Auth;
 using EmployeeManagmentModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Shared.Dtos;
+using System.Collections.ObjectModel;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -32,7 +34,7 @@ namespace EmployeeManagmentApi.Controllers
             try
             {
              //   Admin user = await authService.ValidateUser(userLoginDto.Username, userLoginDto.Password);
-                Admin user = await authService.GetUser(userLoginDto.Username, userLoginDto.Password);
+                Admin user = await authService.ValidateUser(userLoginDto.Username, userLoginDto.Password);
 
                 if (user == null)
                 {
@@ -87,21 +89,24 @@ namespace EmployeeManagmentApi.Controllers
             new Claim("Email", user.Email),
             new Claim("Age", user.Age.ToString()),
             new Claim("Domain", user.Domain),
-            new Claim("SecurityLevel", user.SecurityLevel.ToString())
+      
         };
             return claims.ToList();
         }
 
         [HttpPost, Route("register")]
-        public async Task<ActionResult> RegisterAdmin(  Admin admin)
+        public async Task<ActionResult> RegisterAdmin([FromBody] Admin admin)
         {
             try
             {
                 Admin user = await authService.RegisterAdmin(admin);
-               
-                return Ok(user);
 
- 
+                return Ok(user);
+            }
+            catch (DbUpdateException dbEx)
+            {
+                // Log the error (dbEx) for further investigation
+                return BadRequest("An error occurred while saving to the database. See inner exception for details.");
             }
             catch (Exception e)
             {

@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace EmployeeManagmentModel
+namespace Shared.Dtos
 {
-    public class Admin
+    public class RegisterUserDto
     {
-        public int AdminId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
@@ -19,12 +15,6 @@ namespace EmployeeManagmentModel
         public string Name { get; set; }
         public string Role { get; set; }
         public int Age { get; set; }
-
-
-        [JsonIgnore]
-        public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
-
-
-
+        public int SecurityLevel { get; set; }
     }
 }
