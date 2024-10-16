@@ -1,0 +1,64 @@
+﻿/* EmployeeList css */
+ 
+h3
+{
+    color: black;
+    text-align: center;
+ 
+}
+.selectandfootercontent {
+    color: black;
+    text-align: center;
+    margin-top: 1rem;
+}
+.contentList {
+    height: 100vh;
+    width: 100%;
+
+   
+}
+.card-deck {
+  
+    display: flex;
+    flex-wrap: wrap;
+    
+    justify-content: center;
+     
+     
+}
+
+.card {
+    flex: 0 0 calc(30% - 1rem);
+    margin-bottom: 1rem;
+
+}
+
+.sticky-button {
+    font-family: 'Roboto', sans-serif;
+    background-color: yellow !important; /* Remove !important for testing */
+    color: black;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 200px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+ z-index: 1000;
+    padding: 10px;
+}
+
+    .sticky-button:hover {
+        background-color: orange !important;
+    }
+
+@media (max-width: 1314px) {
+    .card {
+        flex: 0 0 calc(48% - 1rem);
+    }
+}
+
+

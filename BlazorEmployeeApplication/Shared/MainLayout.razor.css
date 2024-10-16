@@ -1,4 +1,8 @@
 .page {
+    background: rgb(222,222,222);
+    background: linear-gradient(90deg, rgba(222,222,222,1) 100%, rgba(209,193,0,1) 100%, rgba(0,212,255,1) 100%);
+}
+/*.page {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -79,3 +83,4 @@ main {
         padding-right: 1.5rem !important;
     }
 }
+*/

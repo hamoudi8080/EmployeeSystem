@@ -1,0 +1,22 @@
+﻿.card {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(82,82,250,1) 35%, rgba(0,212,255,1) 100%);
+    width: 330px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+h3 {
+    color: white;
+    text-align: center;
+}
+
+@media only screen and (max-width: 740px) {
+    .card {
+        width: 400px;
+    }
+}

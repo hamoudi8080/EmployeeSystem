@@ -13,6 +13,7 @@ namespace EmployeeManagmentApi.Auth
             this.appDbContext = appDbContext;
         }
 
+        /*
         private readonly IList<Admin> users = new List<Admin>
     {
         new Admin
@@ -38,12 +39,13 @@ namespace EmployeeManagmentApi.Auth
   
         }
     };
+        */
 
         public async Task<Admin> ValidateUser(string username, string password)
         {
 
             Admin? existingUser = await appDbContext.Admin
-       .FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
+            .FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
 
             if (existingUser == null)
             {
@@ -82,6 +84,7 @@ namespace EmployeeManagmentApi.Auth
 
         public async Task<Admin> RegisterAdmin(Admin user)
         {
+
             if (string.IsNullOrEmpty(user.Username))
             {
                 throw new ValidationException("Username cannot be null");
@@ -92,15 +95,23 @@ namespace EmployeeManagmentApi.Auth
                 throw new ValidationException("Password cannot be null");
             }
 
+            // Check if the username already exists
+            var existingAdmin = await appDbContext.Admin
+                .FirstOrDefaultAsync(a => a.Username == user.Username);
+
+            if (existingAdmin != null)
+            {
+                throw new InvalidOperationException("Username already exists.");
+            }
+
             // Hash the password using BCrypt (which includes salting)
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+
             // Add the user to the database
             await appDbContext.Admin.AddAsync(user);
 
             // Save changes to the database
             await appDbContext.SaveChangesAsync();
-
-          
 
             // Return the registered user
             return user;

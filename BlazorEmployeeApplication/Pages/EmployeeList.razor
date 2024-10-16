@@ -1,46 +1,48 @@
 ﻿@page "/"
-@inherits EmployeeListBase;
- 
+@inherits EmployeeListBase
+
 @using Microsoft.AspNetCore.Components.Authorization
-
-<head>
-	<link rel="stylesheet" href="/css/EmployeeList.css" />
-</head>
+@using BlazorEmployeeApplication.Components  
 
 
+<style>
+   
+</style>
 <AuthorizeView>
+    <NotAuthorized>
+        <h3>You are not authorized to access this page</h3>
+    </NotAuthorized>
+    <Authorized>
+        <div class="contentList">
+@*             <h3>Hello, @context.User.Identity.Name</h3> *@
+             <h3>Selected Employee @SelectedEmployeesCount</h3>
 
-			<NotAuthorized>
-				<h3> You are not authorized to access this page</h3>
-			</NotAuthorized>
-			 <Authorized >
-            <h3> Hello, @context.User.Identity.Name</h3
-				
-			
-			
-			<h3> Selected Employee @SelectedEmployeesCount</h3>
+            <div class="selectandfootercontent">
+                <input type="checkbox" id="showFooter" @bind="ShowFooter" />
+                <label for="showFooter">Show Footer</label>
+            </div>
+            
 
-			<input type="checkbox" id="showFooter" @bind="ShowFooter" />
-			<label for="showFooter">Show Footer</label>
-
-			@if (Employees == null)
-			{
-				<div class="spinner"></div>
-			}
-			else
-			{
-				<div class="card-deck">
-					@foreach (var employee in Employees)
-					{
-						<DisplayEmployee Employee="employee" ShowFooter="ShowFooter" OnEmployeeSelection="EmployeeSelectionChanged">
-						</DisplayEmployee>
-					}
-				</div>
-}
-
-			
-			</Authorized>
-
-
+            @if (Employees == null)
+            {
+                <div class="spinner"></div>
+            }
+            else
+            {
+                <div class="card-deck">
+                    @foreach (var employee in Employees)
+                    {
+                        <DisplayEmployee Employee="employee" ShowFooter="ShowFooter" OnEmployeeSelection="EmployeeSelectionChanged">
+                        </DisplayEmployee>
+                    }
+                </div>
+            }
+            <div class="contentBtn"> 
+                <button type="button" class="btn btn-secondary sticky-button">Secondary</button>
+                 
+            </div>
+            
+        </div>
+  
+    </Authorized>
 </AuthorizeView>
-

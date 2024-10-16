@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: ${DOCKER_REGISTRY-}frontend
+    build:
+      context: .
+      dockerfile: BlazorEmployeeApplication/Dockerfile   
+    ports:
+      - "80:80" 
+    networks:
+      - app-network
+
+  employeemanagmentapi:
+    image: ${DOCKER_REGISTRY-}employeemanagmentapi
+    build:
+      context: .
+      dockerfile: EmployeeManagmentApi/Dockerfile
+    ports:
+      - "5001:5000"
+    networks:
+      - app-network
+    environment:
+      - DefaultConnection=Server=employeepostgressqldb.postgres.database.azure.com;Database=EmployeesDB;Port=5432;User Id=techschool;Password=Aqaq1997914;Ssl Mode=VerifyFull;
+
+  postgresdatabase:
+    image: postgres:latest
+    container_name: postgrescontainer
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 4683
+      POSTGRES_DB: EmployeesDB
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -8,11 +8,13 @@ namespace EmployeeManagmentApi.Repository
     public class DepartmentRepository : IDepartmentRepository
     {
         private readonly AppDbContext appDbContext;
-
-        public DepartmentRepository(AppDbContext appDbContext)
+        private readonly ILogger<DepartmentRepository> _logger;
+        public DepartmentRepository(AppDbContext context, ILogger<DepartmentRepository> logger)
         {
-            this.appDbContext = appDbContext;
+            appDbContext = context;
+            _logger = logger;
         }
+
 
         public async Task<Department> GetDepartment(int departmentId)
         {
@@ -22,7 +24,15 @@ namespace EmployeeManagmentApi.Repository
 
         public async Task<IEnumerable<Department>> GetDepartments()
         {
-            return await appDbContext.Departments.ToListAsync();
+            try
+            {
+                return await appDbContext.Departments.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving data from the database");
+                throw;
+            }
         }
     }
 }

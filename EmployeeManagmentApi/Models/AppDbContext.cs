@@ -12,8 +12,8 @@ namespace EmployeeManagmentApi.Models
 		: base(options)
 		{
 		}
-
-		public DbSet<Employee> Employees { get; set; }
+        // "DefaultConnection": "Host=employeepostgressqldb.postgres.database.azure.com; Port=5432; Database=EmployeesDB; Username=techschool;Password=Aqaq1997914"
+        public DbSet<Employee> Employees { get; set; }
 		public DbSet<Department> Departments { get; set; }
         public DbSet<Admin> Admin { get; set; }
 

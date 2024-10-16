@@ -1,25 +1,14 @@
 ﻿@using BlazorEmployeeApplication.Components
 @using BlazorEmployeeApplication.Services
-@inherits LayoutComponentBase
- 
- 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
+@using Microsoft.AspNetCore.Components.Authorization
+ @inherits LayoutComponentBase
 
-
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <LoginButtons/>
-        </div>
-
-        <article class="content px-4 container">
-            @Body
-        </article>
-    </main>
+<div>
+   <NavBar/>
 </div>
 
-
- 
+<main class="page">
+    <article class="content">
+        @Body
+    </article>
+</main> 

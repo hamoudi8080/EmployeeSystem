@@ -1,9 +1,13 @@
 ﻿@page "/employeedetails/{id}"
 @inherits EmployeeDetailsBase;
-<head>
-    <link rel="stylesheet" href="/css/EmployeeDetails.css" />
-</head>
 
+<style>
+    .HideFooter {
+        display: none;
+    }
+
+
+</style>
 
 @if (Employee == null || Employee.Department == null)
 {

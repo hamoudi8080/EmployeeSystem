@@ -1,5 +1,6 @@
 ﻿using EmployeeManagmentApi.Auth;
 using EmployeeManagmentModel;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -28,6 +29,7 @@ namespace EmployeeManagmentApi.Controllers
             this.authService = authService;
         }
 
+        [EnableCors]
         [HttpPost, Route("login")]
         public async Task<ActionResult> Login([FromBody] UserLoginDto userLoginDto)
         {
@@ -93,7 +95,7 @@ namespace EmployeeManagmentApi.Controllers
         };
             return claims.ToList();
         }
-
+        [EnableCors]
         [HttpPost, Route("register")]
         public async Task<ActionResult> RegisterAdmin([FromBody] Admin admin)
         {

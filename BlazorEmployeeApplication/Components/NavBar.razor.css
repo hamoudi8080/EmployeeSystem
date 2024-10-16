@@ -1,0 +1,67 @@
+﻿.navbar {
+    margin: 0;
+    padding: 0;
+    height: 100% !important;
+    background-color: #1434A4 !important;
+}
+
+
+.mybox {
+    height: 100% !important;
+    background-color: #1434A4 !important;
+}
+
+.collapse {
+    margin-top: 5px;
+    background-color: #1434A4 !important;
+    width: 100%;
+}
+
+.navbar-nav {
+}
+
+.nav-link {
+    color: white !important;
+    position: relative; /* Ensure the nav-link is positioned relative to the pseudo-element */
+    z-index: 1; /* Ensure the text is above the pseudo-element */
+}
+
+    .nav-link:hover {
+        color: #1434A4 !important;
+        transition: color 0.7s ease; /* Adds smooth transition effect for color */
+    }
+
+.nav-item {
+    margin-left: 15px;
+    position: relative; /* Ensure the nav-item is positioned relative to the pseudo-element */
+    overflow: hidden; /* Ensures the animation is contained within the element */
+}
+
+    .nav-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: yellow;
+        z-index: 0; /* Ensure the background is below the text */
+        transition: height 0.3s ease; /* Adds smooth transition effect */
+    }
+
+    .nav-item:hover::before {
+        height: 100%; /* Expands the background color to full height */
+    }
+
+.title-a {
+    background-color: yellow !important;
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: #1434A4;
+}

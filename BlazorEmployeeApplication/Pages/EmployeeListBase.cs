@@ -18,6 +18,9 @@ namespace BlazorEmployeeApplication.Pages
         private bool isLoggedIn;
 
         [Inject]
+        private NavigationManager NavigationManager { get; set; }
+
+        [Inject]
         public IEmployeeService EmployeeService { get; set; }
 
         public IEnumerable<Employee> Employees { get; set; }
@@ -39,8 +42,12 @@ namespace BlazorEmployeeApplication.Pages
              
         }
 
+        public void NavigateToNewPage()
+        {
+            NavigationManager.NavigateTo("/newpage");
+        }
 
-		protected int SelectedEmployeesCount { get; set; } = 0;
+        protected int SelectedEmployeesCount { get; set; } = 0;
 
 		protected void EmployeeSelectionChanged(bool isSelected)
 		{
