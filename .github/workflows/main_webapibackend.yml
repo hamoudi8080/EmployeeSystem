@@ -24,11 +24,9 @@ jobs:
         password: ${{ secrets.AzureAppService_ContainerPassword_0d6dbf5dd8c645c9b14a25112bdaf9ca }}
 
     - name: Build and push container image to registry
-      uses: docker/build-push-action@v3
-      with:
-        push: true
-        tags: webappcontainerregistry97.azurecr.io/employeemanagmentapi:${{ github.sha }}
-        file: ./EmployeeManagmentApi/Dockerfile
+      run: |
+        docker-compose -f docker-compose.yml build
+        docker-compose -f docker-compose.yml push
 
   deploy:
     runs-on: ubuntu-latest
@@ -45,4 +43,4 @@ jobs:
         app-name: 'webapibackend'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_260a120db6034ae0bdf812da6865d51d }}
-        images: 'webappcontainerregistry97.azurecr.io/employeemanagmentapi:${{ github.sha }}'
+        images: 'webappcontainerregistry97.azurecr.io/employeemanagmentapi:latest'
