@@ -81,13 +81,15 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 //due to CORS restrictions from web api side. 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-    });
+    options.AddPolicy("AllowAllHeaders",
+            builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyHeader()
+                       .AllowAnyMethod();
+            });
 });
+
 AuthorizationPolicies.AddPolicies(builder.Services);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -119,8 +121,9 @@ if (app.Environment.IsDevelopment())
     
 }
 
+
 app.UseHttpsRedirection();
-app.UseCors(); // Place this before app.Run()
+app.UseCors("AllowAllHeaders");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagmentApi", "EmployeeManagmentApi\EmployeeManagmentApi.csproj", "{7640A183-5F95-4810-822F-C359DC510962}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D0922E40-6DF9-4B17-8A2F-63504DEA03AA} = {D0922E40-6DF9-4B17-8A2F-63504DEA03AA}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagmentModel", "EmployeeManagmentModel\EmployeeManagmentModel.csproj", "{46A5A08A-EBA2-4CC5-9F2D-8E1AAE214E86}"
 EndProject
