@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: webappcontainerregistry97.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_91551d0f78ea436c8a03fa83a01832b4 }}/employeemanagmentapi:${{ github.sha }}
-        file: ../EmployeeManagementApi/Dockerfile
+        file: ./EmployeeManagementApi/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
