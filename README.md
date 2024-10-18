@@ -7,7 +7,7 @@ This is a full-stack Employee System application with all main functions.
 - **Backend**: ASP.NET Core Web APIs
 - **Database**: Entity Framework Core with PostgreSQL
 - **Authentication**: JWT (JSON Web Tokens) for API protection and user authentication/authorization
-- **Containerization**: Docker
+- **Containerization**: Docker, a standalone container for backend, and a container for frontend blazor
 - **CI/CD**: Continuous Integration and Continuous Deployment
 
 ## Features
