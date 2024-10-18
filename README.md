@@ -1,6 +1,6 @@
 # Employee System Application
 
-This is a full-stack Employee System application with all main functions. 
+This is a full-stack Employee System application with all main functions. have a looking on systemRequirements markdown file in documents folder
 
 ## Technology Stack
 - **Frontend**: Blazor WebAssembly (BlazorWASM)
