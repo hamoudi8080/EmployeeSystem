@@ -41,7 +41,7 @@ builder.Services.AddScoped<IAuthService, JwtAuthService>(sp =>
 });
 */
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://webapibackend-ascmfwe9gye2f2c4.germanywestcentral-01.azurewebsites.net/") });
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://backendemployee-hpa5a7dhg4cuf2de.canadacentral-01.azurewebsites.net/") });
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<IAuthService, JwtAuthService>(sp =>
