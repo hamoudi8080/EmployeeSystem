@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: webappcontainerregistry97.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_e3c712859b2041b191546b95077bc526 }}/frontend:${{ github.sha }}
-        file: ./Dockerfile
+        file: ./BlazorEmployeeApplication/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
