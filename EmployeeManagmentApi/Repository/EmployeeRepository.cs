@@ -1,4 +1,5 @@
-﻿using EmployeeManagmentApi.Models;
+﻿using AutoMapper;
+using EmployeeManagmentApi.Models;
 using EmployeeManagmentModel;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,10 +8,11 @@ namespace EmployeeManagmentApi.Repository
     public class EmployeeRepository : IEmployeeRepository
     {
         private readonly AppDbContext appDbContext;
-
-        public EmployeeRepository(AppDbContext appDbContext)
+        private readonly IMapper _mapper;
+        public EmployeeRepository(AppDbContext appDbContext, IMapper mapper)
         {
             this.appDbContext = appDbContext;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<Employee>> GetEmployees()
@@ -44,8 +46,11 @@ namespace EmployeeManagmentApi.Repository
             var result = await appDbContext.Employees
                 .FirstOrDefaultAsync(e => e.EmployeeId == employee.EmployeeId);
 
+
             if (result != null)
             {
+
+                /*
                 result.FirstName = employee.FirstName;
                 result.LastName = employee.LastName;
                 result.Email = employee.Email;
@@ -53,7 +58,8 @@ namespace EmployeeManagmentApi.Repository
                 result.Gender = employee.Gender;
                 result.DepartmentId = employee.DepartmentId;
                 result.PhotoPath = employee.PhotoPath;
-
+                */
+                _mapper.Map(employee, result);
                 await appDbContext.SaveChangesAsync();
 
                 return result;

@@ -52,12 +52,8 @@ namespace BlazorEmployeeApplication.Pages
             }
 
             Departments = (await DepartmentService.GetDepartments()).ToList();
+
             Mapper.Map(Employee, EditEmployeeModel);
-
-
- 
-
-
 
 
         }

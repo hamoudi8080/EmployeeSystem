@@ -36,7 +36,9 @@ app.MapControllers();
 app.Run();
 */
 
+using AutoMapper;
 using EmployeeManagmentApi.Auth;
+using EmployeeManagmentApi.AutoMapper;
 using EmployeeManagmentApi.Models;
 using EmployeeManagmentApi.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -68,6 +70,7 @@ builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
+builder.Services.AddAutoMapper(typeof(EmployeeProfile));
 
 //AddCors. you are telling the server to allow requests from any origin (AllowAnyOrigin),
 //with any headers (AllowAnyHeader),

@@ -6,6 +6,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Pages\LoginPage.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pages\LoginPage.razor.css" />
+  </ItemGroup>
+
   <!--<ItemGroup>
     <Content Include="Pages\EmployeeList.razor.css" />
   </ItemGroup>-->
