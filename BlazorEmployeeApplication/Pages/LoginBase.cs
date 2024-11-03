@@ -11,7 +11,7 @@ namespace BlazorEmployeeApplication.Pages
 {
     public class LoginBase : ComponentBase
     {
-        protected string userName;
+        protected string username;
         protected string password;
         protected string errorLabel;
 
@@ -27,12 +27,12 @@ namespace BlazorEmployeeApplication.Pages
 
        
      
-        protected async Task LoginAsync()
+        protected async Task HandleSubmit()
         {
             errorLabel = "";
             try
             {
-                string token = await authService.LoginAsync(userName, password);
+                string token = await authService.LoginAsync(username, password);
                 if (!string.IsNullOrEmpty(token))
                 {
                  //   await SessionStorage.SetItemAsync("token", token);

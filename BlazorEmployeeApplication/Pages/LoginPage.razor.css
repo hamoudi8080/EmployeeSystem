@@ -10,6 +10,13 @@
     height: calc(100% - 73px);
 }
 
+h3{
+    margin-top: 10px;
+    color: black;
+    text-align: center;
+
+}
+
 @media (max-width: 450px) {
     .h-custom {
         height: 100%;

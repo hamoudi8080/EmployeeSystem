@@ -2,11 +2,11 @@
 @inherits EmployeeListBase
 
 @using Microsoft.AspNetCore.Components.Authorization
-@using BlazorEmployeeApplication.Components  
+@using BlazorEmployeeApplication.Components
 
 
 <style>
-   
+
 </style>
 <AuthorizeView>
     <NotAuthorized>
@@ -14,14 +14,14 @@
     </NotAuthorized>
     <Authorized>
         <div class="contentList">
-@*             <h3>Hello, @context.User.Identity.Name</h3> *@
-             <h3>Selected Employee @SelectedEmployeesCount</h3>
+            @*             <h3>Hello, @context.User.Identity.Name</h3> *@
+            <h3>Selected Employee @SelectedEmployeesCount</h3>
 
             <div class="selectandfootercontent">
                 <input type="checkbox" id="showFooter" @bind="ShowFooter" />
                 <label for="showFooter">Show Footer</label>
             </div>
-            
+
 
             @if (Employees == null)
             {
@@ -37,12 +37,19 @@
                     }
                 </div>
             }
-            <div class="contentBtn"> 
-                <button type="button" class="btn btn-secondary sticky-button">Secondary</button>
-                 
+            <div class="addemployeecontent">
+
+                <button type="button" class="btn btn-secondary sticky-button ">
+                    Add employee
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 12 18">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                    </svg>
+                </button>
+
+
             </div>
-            
+
         </div>
-  
+
     </Authorized>
 </AuthorizeView>

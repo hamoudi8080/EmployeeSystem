@@ -2,6 +2,7 @@
  
 h3
 {
+    margin-top: 10px;
     color: black;
     text-align: center;
  
@@ -11,17 +12,14 @@ h3
     text-align: center;
     margin-top: 1rem;
 }
-.contentList {
-    height: 100vh;
+.contentList { 
     width: 100%;
 
-   
 }
 .card-deck {
   
     display: flex;
     flex-wrap: wrap;
-    
     justify-content: center;
      
      
@@ -35,10 +33,10 @@ h3
 
 .sticky-button {
     font-family: 'Roboto', sans-serif;
-    background-color: yellow !important; /* Remove !important for testing */
-    color: black;
+    background-color: blue !important; /* Remove !important for testing */
+    color: white;
     position: fixed;
-    bottom: 20px;
+    bottom: 80px;
     left: 20px;
     width: 200px;
     border: none;
@@ -47,14 +45,21 @@ h3
     cursor: pointer;
     transition: background-color 0.3s;
   
- z-index: 1000;
+    z-index: 1000;
     padding: 10px;
 }
 
     .sticky-button:hover {
-        background-color: orange !important;
+        background-color: yellow !important;
+        color: black;
+        font-family: 'Roboto', sans-serif;
+
     }
 
+
+.addemployeecontent{
+    display: flex;
+}
 @media (max-width: 1314px) {
     .card {
         flex: 0 0 calc(48% - 1rem);

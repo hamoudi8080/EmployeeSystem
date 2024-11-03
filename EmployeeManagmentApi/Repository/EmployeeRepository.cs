@@ -59,6 +59,7 @@ namespace EmployeeManagmentApi.Repository
                 result.DepartmentId = employee.DepartmentId;
                 result.PhotoPath = employee.PhotoPath;
                 */
+                //Properties not provided in the source object (like adminId here) remain unaffected in the target (result) object.
                 _mapper.Map(employee, result);
                 await appDbContext.SaveChangesAsync();
 

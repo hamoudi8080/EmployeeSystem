@@ -3,16 +3,17 @@
 @using Microsoft.AspNetCore.Components.Authorization
  @inherits LayoutComponentBase
 
-<div>
-   <NavBar/>
-</div>
+<div class="page-container">
+    <div>
+        <NavBar />
+    </div>
 
-<main class="page">
-    <article class="content">
-        @Body
-    </article>
-</main>
+    <main class="page">
+        <article class="content">
+            @Body
 
-<div>
-    <Footer/>
+        </article>
+    </main>
+
+    <Footer />
 </div>
