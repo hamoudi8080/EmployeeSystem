@@ -5,9 +5,15 @@
     height: 1px;
     background: #eee;
 }
+.containerSection {
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .h-custom {
-    height: calc(100% - 73px);
+    
 }
 
 h3{
@@ -16,7 +22,7 @@ h3{
     text-align: center;
 
 }
-
+ 
 @media (max-width: 450px) {
     .h-custom {
         height: 100%;

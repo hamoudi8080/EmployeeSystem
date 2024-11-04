@@ -8,8 +8,10 @@
 
 /* Make the main content area grow to take up the remaining space */
 .page {
+     
     flex-grow: 1;
 }
+ 
 
 /* Footer styles */
 .footer {

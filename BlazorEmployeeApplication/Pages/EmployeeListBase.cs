@@ -15,17 +15,17 @@ namespace BlazorEmployeeApplication.Pages
 
         private string? name;
         private IEnumerable<Claim>? userClaims;
-        private bool isLoggedIn;
+        protected bool isLoggedIn;
 
         [Inject]
-        private NavigationManager NavigationManager { get; set; }
+        protected NavigationManager NavigationManager { get; set; }
 
         [Inject]
-        public IEmployeeService EmployeeService { get; set; }
+        protected IEmployeeService EmployeeService { get; set; }
 
-        public IEnumerable<Employee> Employees { get; set; }
+        protected IEnumerable<Employee> Employees { get; set; }
 
-		public bool ShowFooter { get; set; } = true;
+        protected bool ShowFooter { get; set; } = true;
 
 		protected override async Task OnInitializedAsync()
         {
@@ -42,14 +42,14 @@ namespace BlazorEmployeeApplication.Pages
              
         }
 
-        public void NavigateToNewPage()
+        protected void NavigateToNewPage()
         {
             NavigationManager.NavigateTo("/newpage");
         }
 
         protected int SelectedEmployeesCount { get; set; } = 0;
 
-		protected void EmployeeSelectionChanged(bool isSelected)
+        protected void EmployeeSelectionChanged(bool isSelected)
 		{
 			if (isSelected)
 			{
@@ -60,11 +60,17 @@ namespace BlazorEmployeeApplication.Pages
 				SelectedEmployeesCount--;
 			}
 		}
-		 
-           
 
-        
-       
-	}
+        protected Task AddEmployee()
+        {
+            NavigationManager.NavigateTo("/editemployee");
+            return Task.CompletedTask;
+        }
+
+
+
+
+
+    }
 
 }

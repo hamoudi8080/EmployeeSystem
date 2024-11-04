@@ -12,9 +12,13 @@ h3
     text-align: center;
     margin-top: 1rem;
 }
-.contentList { 
+.contentList {
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-
+    min-height: 88vh;
 }
 .card-deck {
   
